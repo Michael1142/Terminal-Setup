@@ -9,7 +9,8 @@ brew install python
 pip3 install --user powerline-status
 
 # Patched fonts install
-brew install --cask font-fira-code
+brew tap homebrew/cask-fonts && brew  install --cask font-fira-code
+
 
 # Oh my zsh Cobalt theme
 mkdir ~/.iterm_theme
@@ -42,7 +43,7 @@ echo "set expandtab" >> ~/.vimrc
 defaults write com.apple.Finder AppleShowAllFiles true
 
 # replace default zsh config
-mv ./.zshrc ~/.zshrc
+cp -r dotfiles/. /Users/$USER/
 
 echo "You need to set your terminal font to a powerline patched font.\n"
 echo "Set the font by opening iTerm2 pressing cmd + \",\" and going to profiles -> text -> selecting Fira Code as the Font.\n\n"
