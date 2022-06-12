@@ -2,7 +2,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Powerline Status bar 
 brew install python
@@ -38,11 +38,12 @@ echo "set shiftwidth=4" >> ~/.vimrc
 echo "set softtabstop=4" >> ~/.vimrc
 echo "set expandtab" >> ~/.vimrc
 
-# Show hidden files and folders 
-defaults write com.apple.Finder AppleShowAllFiles true
-
 # replace default zsh config
 cp dotfiles/.zshrc /Users/$USER/.zshrc
+exec /bin/zsh
+
+# Show hidden files and folders 
+defaults write com.apple.Finder AppleShowAllFiles true
 
 echo "You need to set your terminal font to a powerline patched font.\n"
 echo "Set the font by opening iTerm2 pressing cmd + \",\" and going to profiles -> text -> selecting Fira Code as the Font.\n\n"
