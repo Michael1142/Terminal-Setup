@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+cwd=$(pwd)
+
 # Homebrew install 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -40,6 +43,7 @@ echo "set softtabstop=4" >> ~/.vimrc
 echo "set expandtab" >> ~/.vimrc
 
 # replace default zsh config
+cd $cwd
 cp dotfiles/.zshrc /Users/$USER/.zshrc
 exec /bin/zsh
 
