@@ -21,11 +21,13 @@ mkdir ~/repos
 
 # Python
 mkdir ~/.virtualenvs
-brew install python3
 brew install virtualenvwrapper
 
 # Java
 brew install openjdk@11
+
+# Kubctl - for intel silicon
+   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
 
 # Oh my zsh Cobalt theme
 mkdir ~/.iterm_theme
