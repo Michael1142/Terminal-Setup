@@ -63,5 +63,3 @@ defaults write com.apple.Finder AppleShowAllFiles true
 
 # Launch zsh 
 exec /bin/zsh
-
-echo "Refer to post install instructions https://github.com/Michael1142/Terminal-Setup"
