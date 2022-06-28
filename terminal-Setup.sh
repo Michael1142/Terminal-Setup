@@ -15,6 +15,18 @@ pip3 install --user powerline-status
 # Patched fonts install
 brew tap homebrew/cask-fonts && brew  install --cask font-fira-code
 
+# pre .zshrc dependencies
+# Dev
+mkdir ~/repos
+
+# Python
+mkdir ~/.virtualenvs
+brew install python3
+brew install virtualenvwrapper
+
+# Java
+brew install openjdk@11
+
 # Oh my zsh Cobalt theme
 mkdir ~/.iterm_theme
 cd ~/.iterm_theme
@@ -45,12 +57,11 @@ echo "set expandtab" >> ~/.vimrc
 # replace default zsh config
 cd $cwd
 cp dotfiles/.zshrc /Users/$USER/.zshrc
-exec /bin/zsh
 
 # Show hidden files and folders 
 defaults write com.apple.Finder AppleShowAllFiles true
 
-echo "You need to set your terminal font to a powerline patched font.\n"
-echo "Set the font by opening iTerm2 pressing cmd + \",\" and going to profiles -> text -> selecting Fira Code as the Font.\n\n"
-echo "You may want to enable font ligatures or change the theme if you're feeling extra fancy...\n"
-echo "To enable cmd and opt to jump around text in iterm go to preferences -> profiles -> keys -> key mappings and select \"Natural Text Encoding\" from the Presets..."
+# Launch zsh 
+exec /bin/zsh
+
+echo "Refer to post install instructions https://github.com/Michael1142/Terminal-Setup"
