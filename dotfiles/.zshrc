@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # Python
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
+source virtualenvwrapper.sh
 
 # Virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
