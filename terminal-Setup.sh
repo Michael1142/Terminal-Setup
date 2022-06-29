@@ -73,7 +73,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 # Useful terminal utilities
-brew_install cask "iterm2"
+brew install cask "iterm2"
 brew_install "tldr"
 brew_install "git"
 
@@ -92,7 +92,7 @@ if test -f $VIM_FILE; then
     mv $VIM_FILE $VIM_FILE"_old"
     echo $VIM_FILE "already exsists old configuraltion moved to" $VIM_FILE"_old"
 fi
-cp dotfiles/.zshrc $VIM_FILE
+cp dotfiles/.vimrc $VIM_FILE
 
 # Show hidden files and folders 
 defaults write com.apple.Finder AppleShowAllFiles true
