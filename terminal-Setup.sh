@@ -28,11 +28,7 @@ if [ -d ~/.oh-my-zsh ]; then
 fi
 
 # Python
-if [[ "$(python3 -V)" =~ "Python 3" ]]; then
-    echo "Python 3 is installed"
-else
-    brew_install python
-fi 
+brew_install python
 
 # Powerline Status bar 
 pip3 install --user powerline-status
