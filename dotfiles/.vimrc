@@ -1,6 +1,6 @@
-echo "syntax enable" >> ~/.vimrc
-echo "set number" >> ~/.vimrc
-echo "set tabstop=4" >> ~/.vimrc
-echo "set shiftwidth=4" >> ~/.vimrc
-echo "set softtabstop=4" >> ~/.vimrc
-echo "set expandtab" >> ~/.vimrc
+syntax enable
+set number
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
