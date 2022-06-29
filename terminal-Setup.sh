@@ -2,7 +2,7 @@
 
 brew_install() {
     echo "\nInstalling $1"
-    if brew list $1 &>/dev/null; then
+    if brew list $1; then
         echo "${1} is already installed"
     else
         brew install $1 && echo "$1 is installed"
@@ -20,7 +20,7 @@ does_file_exist() {
 
 does_dir_exist() {
     if [ ! -d $1 ]; then
-        $2 $1
+        $2
     else
         echo "$1 already exist"
     fi
