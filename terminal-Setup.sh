@@ -13,6 +13,16 @@ does_file_exist() {
     if test -f $1; then
         mv $1 $1"_old"
         echo $1 "already exsists old configuraltion moved to" $1"_old"
+    else
+        echo "$1 already exist"
+    fi
+}
+
+does_dir_exist() {
+    if [ ! -d $1 ]; then
+        $2 $1
+    else
+        echo "$1 already exist"
     fi
 }
 
@@ -27,11 +37,7 @@ else
 fi
 
 # oh-my-zsh
-if [ -d ~/.oh-my-zsh ]; then
-	echo "oh-my-zsh is installed"
- else
- 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
+does_dir_exist "~/.oh-my-zsh" 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
 
 # Python
 brew_install python
@@ -40,18 +46,15 @@ brew_install python
 pip3 install --user powerline-status
 
 # Patched fonts install
-brew tap homebrew/cask-fonts && brew  install --cask font-fira-code
+brew tap homebrew/cask-fonts && brew_install "--cask font-fira-code"
 
 # pre .zshrc dependencies
+
 # Dev
-if [ ! -d "~/repos" ]; then
-    mkdir ~/repos
-fi
+does_dir_exist "~/repos" "mkdir ~/repos"
 
 # Python dev
-if [ ! -d "~/.virtualenvs" ]; then
-    mkdir ~/.virtualenvs
-fi
+does_dir_exist "~/.virtualenvs" "mkdir ~/.virtualenvs"
 brew_install virtualenvwrapper
 
 # Java
@@ -61,21 +64,20 @@ brew_install openjdk@11
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
 
 # Oh my zsh Cobalt theme
-if [ ! -d "~/.iterm_theme" ]; then
-    mkdir ~/.iterm_theme
-    cd ~/.iterm_theme
-    git clone https://github.com/wesbos/Cobalt2-iterm.git
-    cd ./Cobalt2-iterm
-    cp ./cobalt2.zsh-theme ~/.oh-my-zsh/themes/cobalt2.zsh-theme
-fi
+does_dir_exist "~/.iterm_theme" "mkdir ~/.iterm_theme"
+cd ~/.iterm_theme
+does_dir_exist "Cobalt2-iterm" "git clone https://github.com/wesbos/Cobalt2-iterm.git"
+cd ./Cobalt2-iterm
+cp ./cobalt2.zsh-theme ~/.oh-my-zsh/themes/cobalt2.zsh-theme
 
 # ZSH Plugins config
 cd ~/.oh-my-zsh/custom/plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions.git
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+does_dir_exist "zsh-autosuggestions" "git clone https://github.com/zsh-users/zsh-autosuggestions.git"
+does_dir_exist "zsh-syntax-highlighting" "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git"
+
 
 # Useful terminal utilities
-brew install cask "iterm2"
+brew_install "--cask iterm2"
 brew_install "tldr"
 brew_install "git"
 
