@@ -20,7 +20,7 @@ does_file_exist() {
 
 does_dir_exist() {
     if [ ! -d $1 ]; then
-        $2
+        eval "$2"
     else
         echo "$1 already exist"
     fi
