@@ -9,6 +9,12 @@ brew_install() {
     fi
 }
 
+does_file_exist() {
+    if test -f $1; then
+        mv $1 $1"_old"
+        echo $1 "already exsists old configuraltion moved to" $1"_old"
+    fi
+}
 
 CWD=$(pwd)
 
@@ -75,20 +81,14 @@ brew_install "git"
 
 # replace default zsh config
 cd $CWD
-ZSH_FILE=~/.zshrc
-if test -f $ZSH_FILE; then
-    mv $ZSH_FILE $ZSH_FILE"_old"
-    echo $ZSH_FILE "already exsists old configuraltion moved to" $ZSH_FILE"_old"
-fi
-cp dotfiles/.zshrc $ZSH_FILE
+ZSH_FILE=.zshrc
+does_file_exist ~/$ZSH_FILE
+cp dotfiles/$ZSH_FILE ~/$ZSH_FILE
 
 # replace .vimrc file 
-VIM_FILE=~/.vimrc
-if test -f $VIM_FILE; then
-    mv $VIM_FILE $VIM_FILE"_old"
-    echo $VIM_FILE "already exsists old configuraltion moved to" $VIM_FILE"_old"
-fi
-cp dotfiles/.vimrc $VIM_FILE
+VIM_FILE=.vimrc
+does_file_exist ~/$VIM_FILE
+cp dotfiles/$VIM_FILE ~/$VIM_FILE
 
 # Show hidden files and folders 
 defaults write com.apple.Finder AppleShowAllFiles true
