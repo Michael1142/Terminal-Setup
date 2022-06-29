@@ -61,6 +61,9 @@ brew_install openjdk@11
 
 # Kubctl - for intel silicon
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+sudo chown root: /usr/local/bin/kubectl
 
 # Oh my zsh Cobalt theme
 does_dir_exist "~/.iterm_theme" "mkdir ~/.iterm_theme"
