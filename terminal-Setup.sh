@@ -27,7 +27,7 @@ brew install virtualenvwrapper
 brew install openjdk@11
 
 # Kubctl - for intel silicon
-   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
 
 # Oh my zsh Cobalt theme
 mkdir ~/.iterm_theme
@@ -41,28 +41,25 @@ cd ~/.oh-my-zsh/custom/plugins
 git clone https://github.com/zsh-users/zsh-autosuggestions.git
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
-
 # Useful terminal utilities
 brew install cask iterm2
 brew install tldr
 brew install git
 
-# .vimrc setup 
-touch ~/.vimrc
-echo "syntax enable" >> ~/.vimrc
-echo "set number" >> ~/.vimrc
-echo "set tabstop=4" >> ~/.vimrc
-echo "set shiftwidth=4" >> ~/.vimrc
-echo "set softtabstop=4" >> ~/.vimrc
-echo "set expandtab" >> ~/.vimrc
-
 # replace default zsh config
 cd $cwd
-$FILE=~/.zshrc
-if test -f $FILE; then
-    mv $FILE $FILE"_old"
+$ZSH_FILE=~/.zshrc
+if test -f $ZSH_FILE; then
+    mv $ZSH_FILE $ZSH_FILE"_old"
 fi
-cp dotfiles/.zshrc $FILE
+cp dotfiles/.zshrc $ZSH_FILE
+
+# .vimrc setup 
+$VIM_FILE=~/.vimrc
+if test -f $VIM_FILE; then
+    mv $VIM_FILE $VIM_FILE"_old"
+fi
+cp dotfiles/.zshrc $VIM_FILE
 
 # Show hidden files and folders 
 defaults write com.apple.Finder AppleShowAllFiles true
