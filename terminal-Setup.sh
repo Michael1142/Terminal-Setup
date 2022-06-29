@@ -58,11 +58,11 @@ echo "set expandtab" >> ~/.vimrc
 
 # replace default zsh config
 cd $cwd
-FILE=/Users/$USER/.zshrc
-if test -f "$FILE"; then
+$FILE=~/.zshrc
+if test -f $FILE; then
     mv $FILE $FILE"_old"
 fi
-cp dotfiles/.zshrc FILE
+cp dotfiles/.zshrc $FILE
 
 # Show hidden files and folders 
 defaults write com.apple.Finder AppleShowAllFiles true
